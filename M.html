@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript</title>
+    <style type="text/css">
+        *{
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            position: relative;
+        }
+#clock{
+    text-align: center;
+    color: rgb(14, 2, 2);
+    padding-top: 15px;
+    padding-bottom: 0px;
+    border-radius: 50px;
+    left: 30px;
+    top: 20px;
+    font-size: 30px;
+    width: 200px;
+    height: 50px;
+    background-color: rgb(252, 245, 245);
+}
+        
+        .container{
+          
+            height: 700px;
+            width: 470px;
+            background-color: rgb(236, 232, 232);
+            left: 300px;
+            top: 100px;
+            border: 2px red solid;
+            border-radius: 10px;
+            background-image: url(/Desert.jpg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            animation-name: changecolor1;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+        @keyframes changecolor1{
+    0%{
+        border:3px red solid;
+
+    }
+    25%{
+        border:3px fuchsia solid;
+ 
+    }
+    50%{
+        border:3px black solid;
+
+    }
+    75%{
+        border:3px orange solid;
+
+    }
+    100%{
+        border:3px greenyellow solid;
+    }
+}
+        body{
+            background-color: rgb(218, 208, 208);
+        
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        
+        }
+        
+        .container label{
+            font-size: 18px;
+        }
+        #yname{
+            position: absolute;
+            top:170px ;
+            left: 70px;
+        }
+        #yourname{
+           position: absolute;
+           top: 200px;
+           left: 70px;
+           height: 30px;
+           width: 330px;
+           background-color: aqua;
+        }
+        #yemail{
+            position: absolute;
+            top: 240px;
+            left: 70px;
+        }
+        #youremail{
+            position: absolute;
+            top: 265px;
+            left: 70px;
+            width: 330px;
+            height: 30px;
+        }
+        #ypassword{
+            position: absolute;
+            top: 306px;
+            left: 70px;
+        }
+        #yourpassword{
+            position: absolute;
+            top: 330px;
+            left: 70px;
+            width: 330px;
+            height: 30px;
+        
+        }
+        #ydate{
+            position: absolute;
+            top: 376px;
+            left: 70px;
+        }
+        #dofb{
+            position: absolute;
+            top: 400px;
+            left: 70px;
+            width: 330px;
+            height: 30px;
+        
+        }
+        .container input{
+            border-radius: 5px;
+            background-color: aqua;
+            border: 1px red dotted;
+            transition: all 0.2s;
+            transition-timing-function: linear;
+        }
+        .container input:hover{
+            transform: scale(1.07);
+            border: 2px rgb(255, 255, 255) solid;
+        }
+        #ymale{
+            position: absolute;
+            top: 448px;
+            right: 185px;
+        }
+        
+        
+        #gmale{
+            position: absolute;
+            top: 450px;
+            right: 165px;
+        }
+        #yfamle{
+            position: absolute;
+            top: 447px;
+            right: 285px;
+        
+        }
+        #gfamle{
+            position: absolute;
+            top: 450px;
+            right: 265px;
+        }
+        #ysubmit{
+            position: absolute;
+            top: 480px;
+            right: 110px;
+            width: 250px;
+            height: 45px;
+            border-radius: 25px;
+            transition-duration: 0.5s;
+            transition-property: all;
+            transition-timing-function: linear;
+            font-size: 20px;
+        }
+        #ysubmit:hover{
+            background-color: black;
+            color: white;
+        }
+        #ysubmit:active{
+            transform: scale(1.1);
+            background-color: violet;
+            color: rgb(0, 0, 0);
+        }
+        .container h1{
+            position: absolute;
+            text-align: center;
+            top: 90px;
+            left: 120px;
+            color: mediumvioletred;
+        }
+        
+        
+        </style>
+        <script type="text/javascript">
+    function clocktime(){
+        var x = new Date();
+        var y = x.getMinutes();
+        var z = x.getHours();
+        var w = x.getSeconds();
+        document.getElementById("clock").innerText = (z + ":" + y + ":" + w);
+    }
+    window.setInterval(clocktime, 1000)
+
+
+        function SubmitAccount(){
+            var yourname1 = document.getElementById("yourname").value;
+            var youremail1 = document.getElementById("youremail").value;
+            var yourpassword1 = document.getElementById("yourpassword").value;
+            var yourdofb1 = document.getElementById("dofb").value;
+            var fnametest = new RegExp("[A-z]");
+            var emtest = new RegExp("[A-z][A-z0-9]{5,32}@[A-z][A-z0-9]{2}");
+            var numtest = new RegExp("07[987654320][0-9]{7}");
+
+            var valid = true;
+            if(yourname1 == ""){
+                document.getElementById("yourname").style.backgroundColor = 'red';
+                document.getElementById("yourname").placeholder = " Your Name is Empty !"
+                valid = false;
+            }
+            else if(!fnametest.test(yourname1)){
+                document.getElementById("yourname").style.backgroundColor = "white";
+                document.getElementById("yourname").placeholder = " Please don't use Digits !"
+                valid = false;
+            }
+            if(youremail1 == ""){
+                document.getElementById("youremail").style.backgroundColor = 'red';
+                document.getElementById("youremail").placeholder = " Your Email is Empty !"
+                valid = false;
+            }
+            else if(!emtest.test(youremail1)){
+                document.getElementById("youremail").style.backgroundColor = 'green';
+                document.getElementById("youremail").placeholder = " Invalid Email Adress !"
+                valid = false;
+            }
+            if (yourpassword1 == "") {
+                document.getElementById("yourpassword").style.backgroundColor = 'red';
+                document.getElementById("yourpassword").placeholder = " Password Is Empty !";
+                valid = false;
+                 
+            }
+            else if (yourpassword1.length < 6) {
+                document.getElementById("yourpassword").style.backgroundColor = 'green';
+                document.getElementById("yourpassword").placeholder = " Please Type 6 Digit Password !";
+                valid = false;
+            }
+            
+            return valid;
+        }
+
+        
+        </script>
+</head>
+<body>
+    <div id="clock"></div>
+    <div class="container">
+        <h1>Creat Account</h1>
+        <form method="get" onsubmit="return SubmitAccount()">
+            <label for="yourname" id="yname">Your Name</label>
+            <input type="text" name="yourname" placeholder="  Please Enter Your Name !" id="yourname">
+            <label for="youremail" id="yemail">Your Email</label>
+            <input type="email" name="youremail" id="youremail" placeholder="  Please Enter Your Email !">
+            <label for="yourpassword" id="ypassword">Your Password</label>
+            <input type="password" name="yourpassworf" id="yourpassword" placeholder="  Please Enter Your Password !">
+            <label for="dofb" id="ydate">Date and Birth</label>
+            <input type="date" name="dofb" id="dofb" placeholder="  YYYY-MM-DD">
+            <label for="Male" id="ymale">Male</label>
+                <label for="Famle" id="yfamle">Famle</label>
+                <input type="radio" name="Gender" id="gmale" value="0" checked>           
+                <input type="radio" name="Gender" id="gfamle" value="1">
+                <input type="submit" id="ysubmit" value="submit">
+        </form>
+        </div>
+
+    
+
+
+
+
+
+
+    </body>
+</html>
